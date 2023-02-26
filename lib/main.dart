@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'pages/product_detail_screen.dart';
 import 'pages/promotion_detail_screen.dart';
-import 'pages/splash_screen.dart';
 
 void main() async {
   await setupEnvironment(AppEnvironment.production);
@@ -52,7 +51,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/splash',
+        initialRoute: '/',
         onGenerateRoute: (settings) {
           if (settings.name == '/product_detail') {
             final product = settings.arguments as Product;
@@ -72,7 +71,6 @@ class MyApp extends StatelessWidget {
           return null;
         },
         routes: {
-          '/splash': (context) => SplashScreen(),
           '/': (context) => HomeScreen(),
           '/products': (context) => ProductScreen(),
           '/promotions': (context) => PromotionScreen(),

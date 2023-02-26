@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:app_land/models/product.dart';
+import 'package:app_land/models/products.dart';
 
 class ProductRepository {
   final List<Product> _products = [
@@ -53,10 +56,15 @@ class ProductRepository {
   ];
 
   List<Product> getProducts() {
-    // final personJson = '{"name": "Alice", "age": 25}';
-    // final personMap = json.decode(personJson);
-    // final person = Person.fromJson(personMap);
-    return _products;
+    const productsJson =
+        '''{"products" :[ {"id": 7, "name": "Product 7", "description": "Description of Product 7", 
+        "price": 700.0, "imageUrl": "https://via.placeholder.com/150", "category": "Category 7"}, 
+        {"id": 8, "name": "Product 8", "description": "Description of Product 8", 
+        "price": 800.0, "imageUrl": "https://via.placeholder.com/150", "category": "Category 8"}]}''';
+    final productsMap = json.decode(productsJson);
+    final data = Products.fromJson(productsMap);
+
+    return data.products;
   }
 
   List<Product> getProductsByCategory(String category) {
