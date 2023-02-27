@@ -5,6 +5,7 @@ import 'package:app_land/pages/home_screen.dart';
 import 'package:app_land/pages/product_screen.dart';
 import 'package:app_land/pages/promotion_detail_id_screen.dart';
 import 'package:app_land/pages/promotion_screen.dart';
+import 'package:app_land/repositories/product.dart';
 import 'package:app_land/repositories/product_repository.dart';
 import 'package:app_land/repositories/promotion_repository.dart';
 import 'package:app_land/services/app_constants.dart';
@@ -17,7 +18,8 @@ import 'pages/promotion_detail_screen.dart';
 
 void main() async {
   await setupEnvironment(AppEnvironment.production);
-  final productRepository = ProductRepository();
+  // final productRepository = ProductRepository();
+  final productRepository = ProductService();
   final promotionRepository = PromotionRepository();
 
   runApp(MyApp(

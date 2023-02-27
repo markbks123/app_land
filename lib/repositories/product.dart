@@ -1,3 +1,4 @@
+import 'package:app_land/models/post.dart';
 import 'package:app_land/models/product.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -20,6 +21,12 @@ abstract class ProductService {
 
   @GET("/products/{id}")
   Future<Product> getProductById(@Path() int id);
+
+  @GET("/posts")
+  Future<List<Post>> getPosts();
+
+  @GET("/posts/{id}")
+  Future<Post> getPostById(@Path() int id);
 }
 
 class GetProductsByCategoryRequest {

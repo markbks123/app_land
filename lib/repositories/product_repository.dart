@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:app_land/models/post.dart';
 import 'package:app_land/models/product.dart';
 import 'package:app_land/models/products.dart';
+import 'package:app_land/repositories/product.dart';
 
 class ProductRepository {
   final List<Product> _products = [
@@ -79,4 +81,10 @@ class ProductRepository {
   Product getProductById(int id) {
     return _products.firstWhere((product) => product.id == id);
   }
+
+  // Future<List<Post>> getPost() async {
+  //   final posts = await _productService.getPosts();
+  //   print(posts);
+  //   return posts;
+  // }
 }

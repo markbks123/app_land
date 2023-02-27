@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<ProductsBloc>().add(LoadProducts());
     context.read<PromotionsBloc>().add(LoadPromotions());
+    context.read<ProductsBloc>().add(LoadPosts());
 
     return Scaffold(
       appBar: AppBar(

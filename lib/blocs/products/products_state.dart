@@ -15,3 +15,9 @@ class ProductsError extends ProductsState {
 
   ProductsError({required this.message});
 }
+
+class PostsLoaded extends ProductsState {
+  final List<Post> posts;
+
+  PostsLoaded({required this.posts});
+}

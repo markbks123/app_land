@@ -19,7 +19,7 @@ class Client {
   Dio _initClient() => Dio()
     ..options.baseUrl = MyApp.appEnvironment == AppEnvironment.develop
         // ? 'https://friday.hlo.app/api/v1'
-        ? "http://localhost:3000/api/v1"
+        ? "https://jsonplaceholder.typicode.com/"
         : MyApp.appEnvironment == AppEnvironment.uat
             ? 'https://uat-api.friday.in.th/api/v1'
             : 'https://api.friday.in.th/api/v1'

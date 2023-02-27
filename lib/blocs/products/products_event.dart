@@ -9,3 +9,5 @@ class SearchProducts extends ProductsEvent {
 
   SearchProducts({required this.keyword});
 }
+
+class LoadPosts extends ProductsEvent {}
