@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:app_land/main.dart';
 import 'package:app_land/services/app_constants.dart';
 import 'package:dio/dio.dart';
@@ -18,7 +16,6 @@ class Client {
 
   Dio _initClient() => Dio()
     ..options.baseUrl = MyApp.appEnvironment == AppEnvironment.develop
-        // ? 'https://friday.hlo.app/api/v1'
         ? "https://jsonplaceholder.typicode.com/"
         : MyApp.appEnvironment == AppEnvironment.uat
             ? 'https://uat-api.friday.in.th/api/v1'

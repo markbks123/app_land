@@ -81,10 +81,4 @@ class ProductRepository {
   Product getProductById(int id) {
     return _products.firstWhere((product) => product.id == id);
   }
-
-  // Future<List<Post>> getPost() async {
-  //   final posts = await _productService.getPosts();
-  //   print(posts);
-  //   return posts;
-  // }
 }

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    context.read<ProductsBloc>().add(LoadProducts());
+    // context.read<ProductsBloc>().add(LoadProducts());
     context.read<PromotionsBloc>().add(LoadPromotions());
     context.read<ProductsBloc>().add(LoadPosts());
 
@@ -16,52 +16,52 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: BlocBuilder<ProductsBloc, ProductsState>(
-              builder: (context, state) {
-                if (state is ProductsLoaded) {
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: state.products.length,
-                          itemBuilder: (context, index) {
-                            final product = state.products[index];
-                            return ListTile(
-                              title: Text(product.name),
-                              subtitle: Text('\$${product.price}'),
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  '/product_detail',
-                                  arguments: product,
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/products');
-                        },
-                        child: Text('View All Products'),
-                      ),
-                    ],
-                  );
-                } else if (state is ProductsLoading) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else {
-                  return Center(
-                    child: Text('Error loading products.'),
-                  );
-                }
-              },
-            ),
-          ),
+          // Expanded(
+          //   child: BlocBuilder<ProductsBloc, ProductsState>(
+          //     builder: (context, state) {
+          //       if (state is ProductsLoaded) {
+          //         return Column(
+          //           children: [
+          //             Expanded(
+          //               child: ListView.builder(
+          //                 itemCount: state.products.length,
+          //                 itemBuilder: (context, index) {
+          //                   final product = state.products[index];
+          //                   return ListTile(
+          //                     title: Text(product.name),
+          //                     subtitle: Text('\$${product.price}'),
+          //                     onTap: () {
+          //                       Navigator.pushNamed(
+          //                         context,
+          //                         '/product_detail',
+          //                         arguments: product,
+          //                       );
+          //                     },
+          //                   );
+          //                 },
+          //               ),
+          //             ),
+          //             SizedBox(height: 20),
+          //             ElevatedButton(
+          //               onPressed: () {
+          //                 Navigator.pushNamed(context, '/products');
+          //               },
+          //               child: Text('View All Products'),
+          //             ),
+          //           ],
+          //         );
+          //       } else if (state is ProductsLoading) {
+          //         return Center(
+          //           child: CircularProgressIndicator(),
+          //         );
+          //       } else {
+          //         return Center(
+          //           child: Text('Error loading products.'),
+          //         );
+          //       }
+          //     },
+          //   ),
+          // ),
           Expanded(
             child: BlocBuilder<PromotionsBloc, PromotionsState>(
               builder: (context, state) {

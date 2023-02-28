@@ -9,6 +9,7 @@ import 'package:app_land/repositories/product.dart';
 import 'package:app_land/repositories/product_repository.dart';
 import 'package:app_land/repositories/promotion_repository.dart';
 import 'package:app_land/services/app_constants.dart';
+import 'package:app_land/services/dio_client.dart';
 import 'package:app_land/setup_env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,31 +18,39 @@ import 'pages/product_detail_screen.dart';
 import 'pages/promotion_detail_screen.dart';
 
 void main() async {
-  await setupEnvironment(AppEnvironment.production);
+  await setupEnvironment(AppEnvironment.develop);
+  final dioClient = Client();
+  final productService = ProductService(dioClient);
   // final productRepository = ProductRepository();
-  final productRepository = ProductService();
   final promotionRepository = PromotionRepository();
 
   runApp(MyApp(
-    productRepository: productRepository,
+    productService: productService,
+    // productRepository: productRepository,
     promotionRepository: promotionRepository,
   ));
 }
 
 class MyApp extends StatelessWidget {
   static late AppEnvironment appEnvironment;
-  final ProductRepository productRepository;
+  final ProductService productService;
+  // final ProductRepository productRepository;
   final PromotionRepository promotionRepository;
 
-  MyApp({required this.productRepository, required this.promotionRepository});
+  MyApp(
+      {
+      // required this.productRepository,
+      required this.productService,
+      required this.promotionRepository});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductsBloc>(
-          create: (context) =>
-              ProductsBloc(productRepository: productRepository),
+          // create: (context) =>
+          //     ProductsBloc(productRepository: productRepository),
+          create: (context) => ProductsBloc(productService: productService),
         ),
         BlocProvider<PromotionsBloc>(
           create: (context) =>
